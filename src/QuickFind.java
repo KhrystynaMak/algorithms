@@ -2,8 +2,11 @@
 * Data structure.
 ・Integer array id[] of length N.
 ・Interpretation: p and q are connected iff they have the same id.
+*
+* Quick-find defect.
+・Union too expensive (N array accesses).
+・Trees are flat, but too expensive to keep them flat.
 * */
-
 public class QuickFind {
     int[] ids;
 
