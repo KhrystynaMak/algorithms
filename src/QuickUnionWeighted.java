@@ -1,6 +1,9 @@
 /*
 * Data structure. Same as quick-union, but maintain extra array sz[i] to count number of objects in the tree rooted at i
 *  Depth of any node x is at most lg N.
+*
+* Enhancement: path compression
+*   just after computing the root of P, set the id of each examined node to point to that root.
 * */
 public class QuickUnionWeighted {
     int[] ids;
@@ -18,6 +21,8 @@ public class QuickUnionWeighted {
 
     public int getRoot(int i) {
         while(i != ids[i]) {
+            //to make path compression improvement we add this line:
+            ids[i] = ids[ids[i]]; // make every other node in path point to ots grandparent (thereby halving path length)
             i = ids[i];
         }
         return i;
